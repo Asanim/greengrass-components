@@ -27,7 +27,7 @@ else
 fi
 
 # crosscompile and install the aws sdk to the system
-if [ ! -d "/opt/sdk_workspace" ]; then
+if [ ! -d "/opt/sdk_workspace_64" ]; then
   echo "AWS SDK is not installed, "
   ${SCRIPT_PATH}/install_aws_sdk.sh
 else
