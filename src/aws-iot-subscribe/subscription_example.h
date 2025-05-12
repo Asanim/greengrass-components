@@ -1,11 +1,11 @@
 ///
 /// \brief Manages communication with AWS IoT Greengrass Nucleus
 ///
-/// \file request_upload_handler.h
+/// \file request_upload_example.h
 ///
 
-#ifndef SUBSCRIPTION_HANDLER_H_
-#define SUBSCRIPTION_HANDLER_H_
+#ifndef SUBSCRIPTION_EXAMPLE_H_
+#define SUBSCRIPTION_EXAMPLE_H_
 
 #include <aws/crt/Api.h>
 #include <aws/greengrass/GreengrassCoreIpcClient.h>
@@ -15,7 +15,7 @@
 #include <stdexcept>
 #include <string>
 
-class MqttHandler; // Forward declaration
+class MqttExample; // Forward declaration
 
 /// \brief The SubscriptionHandler class.
 ///
@@ -43,4 +43,4 @@ private:
   void OnStreamClosed() override;
 };
 
-#endif // SUBSCRIPTION_HANDLER_H_
+#endif // SUBSCRIPTION_EXAMPLE_H_

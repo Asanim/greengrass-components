@@ -19,7 +19,7 @@ list(APPEND CMAKE_PREFIX_PATH
 
 add_subdirectory(src/aws-iot-mqtt-publish)
 add_subdirectory(src/aws-iot-shadow)
-# add_subdirectory(src/aws-iot-subscribe)
+add_subdirectory(src/aws-iot-subscribe)
 
 # A dummy target to build all examples in this directory
 add_custom_target(examples)

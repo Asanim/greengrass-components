@@ -1,16 +1,14 @@
 ///
 /// \brief Manages communication with AWS IoT Greengrass Nucleus
 ///
-/// \file subscription_handler.cc
+/// \file subscription_example.cc
 ///
 
-#include "subscription_handler.h"
+#include "subscription_example.h"
 #include <iostream>
 #include <stdexcept>
 #include <string>
 #include <regex>
-
-#include "glog/logging.h" // for DLOG, COMPACT_GOOGLE_LOG_INFO, LogMessage, COMPACT_GOOGLE_LOG_F...
 
 void SubscriptionHandler::OnStreamEvent(Aws::Greengrass::IoTCoreMessage *response)
 {

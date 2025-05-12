@@ -1,11 +1,11 @@
 ///
 /// \brief Manages communication with AWS IoT Greengrass Nucleus
 ///
-/// \file mqtt_handler.h
+/// \file mqtt_example.h
 ///
 
-#ifndef MQTT_HANDLER_H_
-#define MQTT_HANDLER_H_
+#ifndef MQTT_EXAMPLE_H_
+#define MQTT_EXAMPLE_H_
 
 #include <aws/crt/Api.h>
 #include <aws/crt/io/HostResolver.h>
@@ -19,37 +19,58 @@
 #include <thread>
 #include <utility>
 
-// Define Status enum
-enum class Status
+// Define ResultCode enum
+enum class ResultCode
 {
     kSuccess,
     kFailure,
-    kNotInitialized
+    kOperationError,
+    kOperationTimeout,
+    kRequestError,
+    kNetworkError,
+    kUnknownError
 };
 
-class SubscriptionHandler; // Forward declaration
+class IpcClientLifecycleHandler : public ConnectionLifecycleHandler {
+    void OnConnectCallback() override {
+      std::cout << "Connected to IPC service." << std::endl;
+      // Handle connection to IPC service.
+    }
+  
+    void OnDisconnectCallback(RpcError error) override {
+      std::cout << "Disconnected from IPC service. Error: " << std::endl;
+      // Handle disconnection from IPC service.
+    }
+  
+    bool OnErrorCallback(RpcError error) override {
+      std::cout << "IPC service connection error: " << std::endl;
+      // Handle IPC service connection error.
+      return true;
+    }
+  };
+  
 
-/// \brief MqttHandler class for handling MQTT communication.
-class MqttHandler
+/// \brief MqttExample class for handling MQTT communication.
+class MqttExample
 {
 public:
-    /// \brief Constructor for the MqttHandler class.
-    MqttHandler();
+    /// \brief Constructor for the MqttExample class.
+    MqttExample();
 
-    /// \brief Destructor for the MqttHandler class.
-    ~MqttHandler();
+    /// \brief Destructor for the MqttExample class.
+    ~MqttExample();
 
     /// \brief Start the initialization step.
     ///
-    /// \return Status indicating the success or failure of the operation.
-    Status Setup();
+    /// \return ResultCode indicating the success or failure of the operation.
+    ResultCode Setup();
 
     ///
     /// \brief Stop the MQTT handler.
     ///
     /// \return Status
     ///
-    Status Stop();
+    ResultCode Stop();
 
     ///
     /// \brief Subscribe to the specified topic.
@@ -58,8 +79,8 @@ public:
     /// \param subscription_handler
     /// \return Status
     ///
-    Status SubscribeToTopic(std::string topic_name,
-                            std::shared_ptr<Aws::Greengrass::SubscribeToIoTCoreStreamHandler> subscription_handler);
+    ResultCode SubscribeToTopic(std::string topic_name,
+                                std::shared_ptr<Aws::Greengrass::SubscribeToIoTCoreStreamHandler> subscription_handler);
 
     /// \brief Check if the MQTT handler is running.
     ///
@@ -71,7 +92,7 @@ private:
     void MainThread();
 
     /// \brief Set up the MQTT connection and configuration.
-    Status SetupMQTT();
+    ResultCode SetupMQTT();
 
     // Member variables
     std::unique_ptr<std::thread> thread_;  ///< Thread for the main MQTT handling logic.
@@ -86,16 +107,13 @@ private:
         socket_resolver_; ///< Pointer to an instance of DefaultHostResolver for socket resolution.
     std::unique_ptr<Aws::Crt::Io::ClientBootstrap>
         client_bootstrap_; ///< Pointer to an instance of ClientBootstrap for setting up client connections.
-    std::shared_ptr<sv::IpcClientLifecycleHandler>
+    std::shared_ptr<IpcClientLifecycleHandler>
         ipc_lifecycle_handler_; ///< Pointer to an instance of IpcClientLifecycleHandler for managing IPC client
                                 ///< lifecycle.
     std::shared_ptr<Aws::Greengrass::GreengrassCoreIpcClient>
         ipc_client_; ///< Pointer to an instance of GreengrassCoreIpcClient for Greengrass Core IPC communication.
-    /// Component update stream handler
-    std::shared_ptr<sv::IpcClientComponentUpdatesStreamHandler> ipc_update_handler_ =
-        std::make_shared<sv::IpcClientComponentUpdatesStreamHandler>();
     /// \brief Pointer to an instance of SubscribeToComponentUpdatesOperation for subscribing to component updates.
     std::shared_ptr<Aws::Greengrass::SubscribeToIoTCoreOperation> subscribe_to_upload_operation_;
-}; // class MqttHandler
+}; // class MqttExample
 
-#endif // MQTT_HANDLER_H_
+#endif // MQTT_EXAMPLE_H_
