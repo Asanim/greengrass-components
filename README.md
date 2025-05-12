@@ -1,6 +1,136 @@
 # AWS Greengrass Component Repository
 
-Welcome to the AWS Greengrass Component Repository! This repository houses a collection of Greengrass components and convenience scripts designed to streamline the deployment and management of AWS Greengrass applications. Whether you are exploring AWS IoT capabilities, experimenting with device shadows, testing publish-subscribe functionalities, or implementing a security camera solution, this repository provides a diverse set of components to meet your needs.
+Welcome to the AWS Greengrass Component Repository! This repository houses a collection of Greengrass components and convenience scripts designed to streamline the deployment and management of AWS Greengrass applications. Whether you are exploring AWS IoT capabilities, experimenting with device shadows, testing publish-subscribe functionalities.
+
+This repository contains examples demonstrating how to interact with AWS IoT services using Greengrass Core IPC. 
+
+---
+
+## AWS IoT Shadow Example (`aws-iot-shadow`)
+
+### Description
+This example demonstrates how to interact with AWS IoT Thing Shadows. It includes operations such as retrieving, updating, and listing named shadows for a device.
+
+### Usage
+1. Build the project using CMake.
+2. Run the executable with the following commands:
+   - **Get Shadow**: `./shadow_handler get <shadow_name>`
+   - **Update Shadow**: `./shadow_handler update <shadow_name> <payload_file>`
+   - **List Shadows**: `./shadow_handler list`
+
+### Environment Variables
+- `AWS_IOT_THING_NAME`: The name of the IoT Thing.
+
+---
+
+## AWS IoT MQTT Publish Example (`aws-iot-mqtt-publish`)
+
+### Description
+This example demonstrates how to publish messages to an MQTT topic using AWS IoT Core.
+
+### Usage
+1. Build the project using CMake.
+2. Run the executable:
+   ```bash
+   ./mqtt_publish
+   ```
+   The program will continuously publish messages to the topic `test/publish`.
+
+### Environment Variables
+- `AWS_IOT_THING_NAME`: The name of the IoT Thing.
+- `GGC_VERSION`: The version of Greengrass Core.
+- `AWS_REGION`: The AWS region.
+- `GG_ROOT_CA_PATH`: Path to the root CA certificate.
+- `AWS_GG_NUCLEUS_DOMAIN_SOCKET_FILEPATH_FOR_COMPONENT`: Path to the Greengrass IPC socket.
+- `SVCUID`: Service UID.
+- `AWS_CONTAINER_AUTHORIZATION_TOKEN`: Authorization token for the container.
+- `AWS_CONTAINER_CREDENTIALS_FULL_URI`: URI for container credentials.
+
+---
+
+## AWS IoT MQTT Subscribe Example (`aws-iot-subscribe`)
+
+### Description
+This example demonstrates how to subscribe to an MQTT topic using AWS IoT Core and handle incoming messages.
+
+### Usage
+1. Build the project using CMake.
+2. Run the executable:
+   ```bash
+   ./shadow_handler <topic_to_subscribe>
+   ```
+   Replace `<topic_to_subscribe>` with the desired MQTT topic.
+
+### Environment Variables
+- `AWS_IOT_THING_NAME`: The name of the IoT Thing.
+- `GGC_VERSION`: The version of Greengrass Core.
+
+---
+
+### Building the Examples
+
+1. Navigate to the project directory:
+   ```bash
+   cd $USER/security-cam
+   ```
+2. Create a build directory and configure the project:
+   ```bash
+   mkdir build && cd build
+   cmake ..
+   ```
+3. Build the project:
+   ```bash
+   make -j$(nproc) examples
+   ```
+
+### Prerequisites
+
+- AWS IoT Greengrass Core installed and configured.
+- AWS IoT Thing created and associated with the Greengrass Core.
+- Required environment variables set.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Overview
 
@@ -98,10 +228,534 @@ Replace `0.0.0` with the version number you wish to use.
 ## scripts
 
 The `scripts` directory contains convenience scripts for managing AWS Greengrass components and AWS profiles. These scripts simplify common tasks related to deployment and AWS profile management.
+# AWS IoT Code Examples
+
+This repository contains examples demonstrating how to interact with AWS IoT services using Greengrass Core IPC. Below are the details for each example:
+
+---
+
+## AWS IoT Shadow Example (`aws-iot-shadow`)
+
+### Description
+This example demonstrates how to interact with AWS IoT Thing Shadows. It includes operations such as retrieving, updating, and listing named shadows for a device.
 
 ### Usage
+1. Build the project using CMake.
+2. Run the executable with the following commands:
+   - **Get Shadow**: `./shadow_handler get <shadow_name>`
+   - **Update Shadow**: `./shadow_handler update <shadow_name> <payload_file>`
+   - **List Shadows**: `./shadow_handler list`
 
-Explore and utilize the scripts in the `scripts` directory based on your specific Greengrass component deployment and management needs. Refer to the script documentation for detailed instructions.
+### Environment Variables
+- `AWS_IOT_THING_NAME`: The name of the IoT Thing.
+
+---
+
+## AWS IoT MQTT Publish Example (`aws-iot-mqtt-publish`)
+
+### Description
+This example demonstrates how to publish messages to an MQTT topic using AWS IoT Core.
+
+### Usage
+1. Build the project using CMake.
+2. Run the executable:
+   ```bash
+   ./mqtt_publish
+   ```
+   The program will continuously publish messages to the topic `test/publish`.
+
+### Environment Variables
+- `AWS_IOT_THING_NAME`: The name of the IoT Thing.
+- `GGC_VERSION`: The version of Greengrass Core.
+- `AWS_REGION`: The AWS region.
+- `GG_ROOT_CA_PATH`: Path to the root CA certificate.
+- `AWS_GG_NUCLEUS_DOMAIN_SOCKET_FILEPATH_FOR_COMPONENT`: Path to the Greengrass IPC socket.
+- `SVCUID`: Service UID.
+- `AWS_CONTAINER_AUTHORIZATION_TOKEN`: Authorization token for the container.
+- `AWS_CONTAINER_CREDENTIALS_FULL_URI`: URI for container credentials.
+
+---
+
+## AWS IoT MQTT Subscribe Example (`aws-iot-subscribe`)
+
+### Description
+This example demonstrates how to subscribe to an MQTT topic using AWS IoT Core and handle incoming messages.
+
+### Usage
+1. Build the project using CMake.
+2. Run the executable:
+   ```bash
+   ./shadow_handler <topic_to_subscribe>
+   ```
+   Replace `<topic_to_subscribe>` with the desire# AWS IoT Code Examples
+
+This repository contains examples demonstrating how to interact with AWS IoT services using Greengrass Core IPC. Below are the details for each example:
+
+---
+
+## AWS IoT Shadow Example (`aws-iot-shadow`)
+
+### Description
+This example demonstrates how to interact with AWS IoT Thing Shadows. It includes operations such as retrieving, updating, and listing named shadows for a device.
+
+### Usage
+1. Build the project using CMake.
+2. Run the executable with the following commands:
+   - **Get Shadow**: `./shadow_handler get <shadow_name>`
+   - **Update Shadow**: `./shadow_handler update <shadow_name> <payload_file>`
+   - **List Shadows**: `./shadow_handler list`
+
+### Environment Variables
+- `AWS_IOT_THING_NAME`: The name of the IoT Thing.
+
+---
+
+## AWS IoT MQTT Publish Example (`aws-iot-mqtt-publish`)
+
+### Description
+This example demonstrates how to publish messages to an MQTT topic using AWS IoT Core.
+
+### Usage
+1. Build the project using CMake.
+2. Run the executable:
+   ```bash
+   ./mqtt_publish
+   ```
+   The program will continuously publish messages to the topic `test/publish`.
+
+### Environment Variables
+- `AWS_IOT_THING_NAME`: The name of the IoT Thing.
+- `GGC_VERSION`: The version of Greengrass Core.
+- `AWS_REGION`: The AWS region.
+- `GG_ROOT_CA_PATH`: Path to the root CA certificate.
+- `AWS_GG_NUCLEUS_DOMAIN_SOCKET_FILEPATH_FOR_COMPONENT`: Path to the Greengrass IPC socket.
+- `SVCUID`: Service UID.
+- `AWS_CONTAINER_AUTHORIZATION_TOKEN`: Authorization token for the container.
+- `AWS_CONTAINER_CREDENTIALS_FULL_URI`: URI for container credentials.
+
+---
+
+## AWS IoT MQTT Subscribe Example (`aws-iot-subscribe`)
+
+### Description
+This example demonstrates how to subscribe to an MQTT topic using AWS IoT Core and handle incoming messages.
+
+### Usage
+1. Build the project using CMake.
+2. Run the executable:
+   ```bash
+   ./shadow_handler <topic_to_subscribe>
+   ```
+   Replace `<topic_to_subscribe>` with the desired MQTT topic.
+
+### Environment Variables
+- `AWS_IOT_THING_NAME`: The name of the IoT Thing.
+- `GGC_VERSION`: The version of Greengrass Core.
+
+---
+
+### Building the Examples# AWS IoT Code Examples
+
+This repository contains examples demonstrating how to interact with AWS IoT services using Greengrass Core IPC. Below are the details for each example:
+
+---
+
+## AWS IoT Shadow Example (`aws-iot-shadow`)
+
+### Description
+This example demonstrates how to interact with AWS IoT Thing Shadows. It includes operations such as retrieving, updating, and listing named shadows for a device.
+
+### Usage
+1. Build the project using CMake.
+2. Run the executable with the following commands:
+   - **Get Shadow**: `./shadow_handler get <shadow_name>`
+   - **Update Shadow**: `./shadow_handler update <shadow_name> <payload_file>`
+   - **List Shadows**: `./shadow_handler list`
+
+### Environment Variables
+- `AWS_IOT_THING_NAME`: The name of the IoT Thing.
+
+---
+
+## AWS IoT MQTT Publish Example (`aws-iot-mqtt-publish`)
+
+### Description
+This example demonstrates how to publish messages to an MQTT topic using AWS IoT Core.
+
+### Usage
+1. Build the project using CMake.
+2. Run the executable:
+   ```bash
+   ./mqtt_publish
+   ```
+   The program will continuously publish messages to the topic `test/publish`.
+
+### Environment Variables
+- `AWS_IOT_THING_NAME`: The name of the IoT Thing.
+- `GGC_VERSION`: The version of Greengrass Core.
+- `AWS_REGION`: The AWS region.
+- `GG_ROOT_CA_PATH`: Path to the root CA certificate.
+- `AWS_GG_NUCLEUS_DOMAIN_SOCKET_FILEPATH_FOR_COMPONENT`: Path to the Greengrass IPC socket.
+- `SVCUID`: Service UID.
+- `AWS_CONTAINER_AUTHORIZATION_TOKEN`: Authorization token for the container.
+- `AWS_CONTAINER_CREDENTIALS_FULL_URI`: URI for container credentials.
+# AWS IoT Code Examples
+
+This repository contains examples demonstrating how to interact with AWS IoT services using Greengrass Core IPC. Below are the details for each example:
+
+---
+
+## AWS IoT Shadow Example (`aws-iot-shadow`)
+
+### Description
+This example demonstrates how to interact with AWS IoT Thing Shadows. It includes operations such as retrieving, updating, and listing named shadows for a device.
+
+### Usage
+1. Build the project using CMake.
+2. Run the executable with the following commands:
+   - **Get Shadow**: `./shadow_handler get <shadow_name>`
+   - **Update Shadow**: `./shadow_handler update <shadow_name> <payload_file>`
+   - **List Shadows**: `./shadow_handler list`
+
+### Environment Variables
+- `AWS_IOT_THING_NAME`: The name of the IoT Thing.
+
+---
+
+## AWS IoT MQTT Publish Example (`aws-iot-mqtt-publish`)
+
+### Description
+This example demonstrates how to publish messages to an MQTT topic using AWS IoT Core.
+
+### Usage
+1. Build the project using CMake.
+2. Run the executable:
+   ```bash
+   ./mqtt_publish
+   ```
+   The program will continuously publish messages to the topic `test/publish`.
+
+### Environment Variables
+- `AWS_IOT_THING_NAME`: The name of the IoT Thing.
+- `GGC_VERSION`: The version of Greengrass Core.
+- `AWS_REGION`: The AWS region.
+- `GG_ROOT_CA_PATH`: Path to the root CA certificate.
+- `AWS_GG_NUCLEUS_DOMAIN_SOCKET_FILEPATH_FOR_COMPONENT`: Path to the Greengrass IPC socket.
+- `SVCUID`: Service UID.
+- `AWS_CONTAINER_AUTHORIZATION_TOKEN`: Authorization token for the container.
+- `AWS_CONTAINER_CREDENTIALS_FULL_URI`: URI for container credentials.
+
+---
+
+## AWS IoT MQTT Subscribe Example (`aws-iot-subscribe`)
+
+### Description
+This example demonstrates how to subscribe to an MQ# AWS IoT Code Examples
+
+This repository contains examples demonstrating how to interact with AWS IoT services using Greengrass Core IPC. Below are the details for each example:
+
+---
+
+## AWS IoT Shadow Example (`aws-iot-shadow`)
+
+### Description
+This example demonstrates how to interact with AWS IoT Thing Shadows. It includes operations such as retrieving, updating, and listing named shadows for a device.
+
+### Usage
+1. Build the project using CMake.
+2. Run the executable with the following commands:
+   - **Get Shadow**: `./shadow_handler get <shadow_name>`
+   - **Update Shadow**: `./shadow_handler update <shadow_name> <payload_file>`
+   - **List Shadows**: `./shadow_handler list`
+
+### Environment Variables
+- `AWS_IOT_THING_NAME`: The name of the IoT Thing.
+
+---
+
+## AWS IoT MQTT Publish Example (`aws-iot-mqtt-publish`)
+
+### Description
+This example demonstrates how to publish messages to an MQTT topic using AWS IoT Core.
+
+### Usage
+1. Build the project using CMake.
+2. Run the executable:
+   ```bash
+   ./mqtt_publish
+   ```
+   The program will continuously publish messages to the topic `test/publish`.
+
+### Environment Variables
+- `AWS_IOT_THING_NAME`: The name of the IoT Thing.
+- `GGC_VERSION`: The version of Greengrass Core.
+- `AWS_REGION`: The AWS region.
+- `GG_ROOT_CA_PATH`: Path to the root CA certificate.
+- `AWS_GG_NUCLEUS_DOMAIN_SOCKET_FILEPATH_FOR_COMPONENT`: Path to the Greengrass IPC socket.
+- `SVCUID`: Service UID.
+- `AWS_CONTAINER_AUTHORIZATION_TOKEN`: Authorization token for the container.
+- `AWS_CONTAINER_CREDENTIALS_FULL_URI`: URI for container credentials.
+
+---
+
+## AWS IoT MQTT Subscribe Example (`aws-iot-subscribe`)
+
+### Description
+This example demonstrates how to subscribe to an MQTT topic using AWS IoT Core and handle incoming messages.
+
+### Usage# AWS IoT Code Examples
+
+This repository contains examples demonstrating how to interact with AWS IoT services using Greengrass Core IPC. Below are the details for each example:
+
+---
+
+## AWS IoT Shadow Example (`aws-iot-shadow`)
+
+### Description
+This example demonstrates how to interact with AWS IoT Thing Shadows. It includes operations such as retrieving, updating, and listing named shadows for a device.
+
+### Usage
+1. Build the project using CMake.
+2. Run the executable with the following commands:
+   - **Get Shadow**: `./shadow_handler get <shadow_name>`
+   - **Update Shadow**: `./shadow_handler update <shadow_name> <payload_file>`
+   - **List Shadows**: `./shadow_handler list`
+
+### Environment Variables
+- `AWS_IOT_THING_NAME`: The name of the IoT Thing.
+
+---
+
+## AWS IoT MQTT Publish Example (`aws-iot-mqtt-publish`)
+
+### Description
+This example demonstrates how to publish messages to an MQTT topic using AWS IoT Core.
+
+### Usage
+1. Build the project using CMake.
+2. Run the executable:
+   ```bash
+   ./mqtt_publish
+   ```
+   The program will continuously publish messages to the topic `test/publish`.
+
+### Environment Variables
+- `AWS_IOT_THING_NAME`: The name of the IoT Thing.
+- `GGC_VERSION`: The version of Greengrass Core.
+- `AWS_REGION`: The AWS region.
+- `GG_ROOT_CA_PATH`: Path to the root CA certificate.
+- `AWS_GG_NUCLEUS_DOMAIN_SOCKET_FILEPATH_FOR_COMPONENT`: Path to the Greengrass IPC socket.
+- `SVCUID`: Service UID.
+- `AWS_CONTAINER_AUTHORIZATION_TOKEN`: Authorization token for the container.
+- `AWS_CONTAINER_CREDENTIALS_FULL_URI`: URI for container credentials.
+
+---
+
+## AWS IoT MQTT Subscribe Example (`aws-iot-subscribe`)
+
+### Description
+This example demonstrates how to subscribe to an MQTT topic using AWS IoT Core and handle incoming messages.
+
+### Usage
+1. Build the project using CMake.
+2. Run the executable:
+   ```bash
+   ./shadow_handler <topic_to_subscribe>
+   ```
+   Replace `<topic_to_subscribe>` with the desired MQTT topic.
+
+### Environment Variables
+- `AWS_IOT_THING_NAME`: The name of the IoT Thing.
+- `GGC_VERSION`: The version of Greengrass Core.
+
+---
+
+### Building the Examples
+
+1. Navigate to the project directory:
+   ```bash
+   cd $USER/security-cam
+   ```
+2. Create a build directory and configure the project:
+   ```bash
+   mkdir build && cd build
+   cmake ..
+   ```
+3. Build the project:
+   ```bash
+   make -j$(nproc) examples
+   ```
+
+### Prerequisites
+
+- AWS IoT Greengrass Core installed and configured.
+- AWS IoT Thing created and associated with the Greengrass Core.
+- Required environment variables set.
+
+1. Build the project using CMake.
+2. Run the executable:
+   ```bash
+   ./shadow_handler <topic_to_subscribe>
+   ```
+   Replace `<topic_to_subscribe>` with the desired MQTT topic.
+
+### Environment Variables
+- `AWS_IOT_THING_NAME`: The name of the IoT Thing.
+- `GGC_VERSION`: The version of Greengrass Core.
+
+---
+
+### Building the Examples
+
+1. Navigate to the project directory:
+   ```bash
+   cd $USER/security-cam
+   ```
+2. Create a build directory and configure the project:
+   ```bash
+   mkdir build && cd build
+   cmake ..
+   ```
+3. Build the project:
+   ```bash
+   make -j$(nproc) examples
+   ```
+
+### Prerequisites
+
+- AWS IoT Greengrass Core installed and configured.
+- AWS IoT Thing created and associated with the Greengrass Core.
+- Required environment variables set.
+TT topic using AWS IoT Core and handle incoming messages.
+
+### Usage
+1. Build the project using CMake.
+2. Run the executable:
+   ```bash
+   ./shadow_handler <topic_to_subscribe>
+   ```
+   Replace `<topic_to_subscribe>` with the desired MQTT topic.
+
+### Environment Variables
+- `AWS_IOT_THING_NAME`: The name of the IoT Thing.
+- `GGC_VERSION`: The version of Greengrass Core.
+
+---
+
+### Building the Examples
+
+1. Navigate to the project directory:
+   ```bash
+   cd $USER/security-cam
+   ```
+2. Create a build directory and configure the project:
+   ```bash
+   mkdir build && cd build
+   cmake ..
+   ```
+3. Build the project:
+   ```bash
+   make -j$(nproc) examples
+   ```
+
+### Prerequisites
+
+- AWS IoT Greengrass Core installed and configured.
+- AWS IoT Thing created and associated with the Greengrass Core.
+- Required environment variables set.
+
+---
+
+## AWS IoT MQTT Subscribe Example (`aws-iot-subscribe`)
+
+### Description
+This example demonstrates how to subscribe to an MQTT topic using AWS IoT Core and handle incoming messages.
+
+### Usage
+1. Build the project using CMake.
+2. Run the executable:
+   ```bash
+   ./shadow_handler <topic_to_subscribe>
+   ```
+   Replace `<topic_to_subscribe>` with the desired MQTT topic.
+
+### Environment Variables
+- `AWS_IOT_THING_NAME`: The name of the IoT Thing.
+- `GGC_VERSION`: The version of Greengrass Core.
+
+---
+
+### Building the Examples
+
+1. Navigate to the project directory:
+   ```bash
+   cd $USER/security-cam
+   ```
+2. Create a build directory and configure the project:
+   ```bash
+   mkdir build && cd build
+   cmake ..
+   ```
+3. Build the project:
+   ```bash
+   make -j$(nproc) examples
+   ```
+
+### Prerequisites
+
+- AWS IoT Greengrass Core installed and configured.
+- AWS IoT Thing created and associated with the Greengrass Core.
+- Required environment variables set.
+
+
+1. Navigate to the project directory:
+   ```bash
+   cd $USER/security-cam
+   ```
+2. Create a build directory and configure the project:
+   ```bash
+   mkdir build && cd build
+   cmake ..
+   ```
+3. Build the project:
+   ```bash
+   make -j$(nproc) examples
+   ```
+
+### Prerequisites
+
+- AWS IoT Greengrass Core installed and configured.
+- AWS IoT Thing created and associated with the Greengrass Core.
+- Required environment variables set.
+d MQTT topic.
+
+### Environment Variables
+- `AWS_IOT_THING_NAME`: The name of the IoT Thing.
+- `GGC_VERSION`: The version of Greengrass Core.
+
+---
+
+### Building the Examples
+
+1. Navigate to the project directory:
+   ```bash
+   cd $USER/security-cam
+   ```
+2. Create a build directory and configure the project:
+   ```bash
+   mkdir build && cd build
+   cmake ..
+   ```
+3. Build the project:
+   ```bash
+   make -j$(nproc) examples
+   ```
+
+### Prerequisites
+
+- AWS IoT Greengrass Core installed and configured.
+- AWS IoT Thing created and associated with the Greengrass Core.
+- Required environment variables set.
 
 Feel free to customize and extend these components according to your project requirements.
 
