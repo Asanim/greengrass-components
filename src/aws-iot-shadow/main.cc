@@ -1,4 +1,4 @@
-#include "shadow_handler.h"
+#include "shadow_example.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -24,7 +24,7 @@ int main(int argc, char* argv[]) {
     Aws::Crt::String thing_name = "exampleThing";
     ShadowExample handler(thing_name);
 
-    if (handler.Initialize() != sv::Status::kSuccess) {
+    if (handler.Initialize() != ResultCode::kSuccess) {
         std::cerr << "Failed to initialize ShadowExample\n";
         return 1;
     }
