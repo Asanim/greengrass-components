@@ -23,21 +23,17 @@ message("CMAKE_PATCH_VERSION: ${CMAKE_PATCH_VERSION}")
 set(AWS_SDK_DIR /opt/sdk_workspace_64)
 
 list(APPEND CMAKE_PREFIX_PATH ${AWS_SDK_DIR}/lib/)
+list(APPEND CMAKE_MODULE_PATH ${AWS_SDK_DIR}/lib/cmake/)
+
+
 set(AWS_LIBRARY_DIR ${AWS_SDK_DIR}/lib/)
 set(AWS_INCLUDE_DIR ${AWS_SDK_DIR}/include/)
-
-set(crypto_INCLUDE_DIR ${OPENSSL_ROOT_DIR}/include/)
-set(crypto_LIBRARY ${OPENSSL_ROOT_DIR}/lib/libcrypto.so)
 
 find_package(aws-crt-cpp REQUIRED)
 find_package(EventstreamRpc-cpp REQUIRED)
 find_package(GreengrassIpc-cpp REQUIRED)
 
-## Datalogging executable
-add_executable(datalogging main_mqtt_standalone.cc)
+## mqtt-publish executable
+add_executable(mqtt-publish main.cc)
 
-set_target_properties(datalogging PROPERTIES
-        LINKER_LANGUAGE CXX
-        CXX_STANDARD 11) 
-
-target_link_libraries(datalogging AWS::GreengrassIpc-cpp)
+target_link_libraries(mqtt-publish AWS::GreengrassIpc-cpp)
