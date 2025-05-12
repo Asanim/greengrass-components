@@ -11,5 +11,6 @@ gdk-config.json
 recipe.json
 deployment.json
 
-artifact
-build
+artifact/
+build/
+archive/
