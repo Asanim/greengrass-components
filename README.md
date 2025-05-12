@@ -4,7 +4,15 @@ Welcome to the AWS Greengrass Component Repository! This repository houses a col
 
 This repository contains examples demonstrating how to interact with AWS IoT services using Greengrass Core IPC. 
 
----
+NOTES:
+
+- Currently only x86 arch is supported. Future work will compile for multiple archs
+
+## Motivation 
+
+While aws has their own samples included within the [aws iot sdk for c++ repo](https://github.com/aws/aws-iot-device-sdk-cpp-v2/tree/main/samples), they are fairly well integrated with the rest of the sdk and depend on many files from the sdk itself and a few common service libraries. This repo attempts to demonstrate how to integrate aws iot sdk for c++ as part of your own projects, particularly existing projects.
+
+We build the aws sdk and source libraries separately then link our test code when building with cmake. 
 
 ## AWS IoT Shadow Example (`aws-iot-shadow`)
 
